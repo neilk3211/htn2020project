@@ -19,18 +19,35 @@ class _TaskListState extends State<TaskList> {
         backgroundColor: Colors.grey[200],
         appBar: AppBar(
           backgroundColor: Colors.blue[900],
-          title: Text('Your Tasks'),
+          title: Text('My Tasks'),
           centerTitle: true,
           elevation: 0,
         ),
-        floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              setState(() {
-                Navigator.pushNamed(context, '/addtask');
-              });
-            },
-            child: Icon(Icons.add),
-            backgroundColor: Colors.grey[800]
+        floatingActionButton: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              FloatingActionButton(
+                child: Icon(
+                    Icons.add
+                ),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/addtask');
+                },
+                heroTag: null,
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              FloatingActionButton(
+                child: Icon(
+                    Icons.calendar_today
+                ),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/calendar');
+                },
+                heroTag: null,
+              )
+            ]
         ),
         body: ListView.builder(
             itemCount: tasknames.length,
