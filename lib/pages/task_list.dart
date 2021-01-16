@@ -39,11 +39,21 @@ class _TaskListState extends State<TaskList> {
                 padding: const EdgeInsets.symmetric(vertical: 1.0, horizontal:4.0),
                 child: Card(
                   child:ListTile(
-                    onTap: () {
+                    onTap: () async {
                       print(tasknames[index].taskname);
-                      Navigator.pushNamed(context, '/addtask');//need to change to edit
+                      dynamic result = await Navigator.pushNamed(context, '/edittask', arguments: { 'taskname' : tasknames[index].taskname });
+                      if (result['delete']) {
+                        setState(() {
+                          tasknames.removeAt(index);
+                        });
+                      } else if (result['completed']) {
+                        setState(() {
+                          tasknames[index].complete = true;
+                        });
+                      }
                     },
                     title: Text(tasknames[index].taskname),
+                    leading: CircleAvatar(backgroundColor: tasknames[index].complete ? Colors.green : Colors.red),
                   ),
                 ),
               );
@@ -57,6 +67,7 @@ class Tasks {
 
   String taskname; // task name for UI
   String url; // task url for api endpoint
+  bool complete = false;
 
   Tasks({ this.taskname, this.url });
 

@@ -5,13 +5,15 @@ class EditTask extends StatefulWidget {
   _EditTaskState createState() => _EditTaskState();
 }
 
+Map data = {};
 class _EditTaskState extends State<EditTask> {
   @override
   Widget build(BuildContext context) {
+    data = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       backgroundColor: Colors.grey[400],
       appBar: AppBar(
-        title: Text('taskname',
+        title: Text(data['taskname'],
           style: TextStyle(
             color: Colors.white
           ),
@@ -25,8 +27,10 @@ class _EditTaskState extends State<EditTask> {
           children: [
             FlatButton.icon(
               onPressed: () {
+                print('ddidddddddddddddddddd');
                 Navigator.pop(context, {
                   'completed' : true,
+                  'delete': false
                 });
               },
               icon: Icon(Icons.check, 
@@ -43,8 +47,10 @@ class _EditTaskState extends State<EditTask> {
             SizedBox(height: 30),
             FlatButton.icon(
               onPressed: (){
+                print('delete');
                 Navigator.pop(context, {
                   'delete': true,
+                  'complete': false,
                 });
               },
               icon: Icon(Icons.delete, color: Colors.red), 
