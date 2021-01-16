@@ -20,7 +20,9 @@ class _CalendarState extends State<Calendar> {
   Widget build(BuildContext context) {
     return Scaffold(  
       appBar: AppBar(  
-        title: Text('Flutter Calendar Example'),  
+        title: Text('Calendar'),
+        backgroundColor: Colors.blue[900], 
+        centerTitle: true, 
       ),  
       body: SingleChildScrollView(  
         child: Column(  

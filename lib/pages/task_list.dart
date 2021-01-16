@@ -70,7 +70,7 @@ class _TaskListState extends State<TaskList> {
                       }
                     },
                     title: Text(tasknames[index].taskname),
-                    leading: CircleAvatar(backgroundColor: tasknames[index].complete ? Colors.green : Colors.red),
+                    leading: Icon(tasknames[index].complete ? Icons.check : Icons.clear_sharp),
                   ),
                 ),
               );
