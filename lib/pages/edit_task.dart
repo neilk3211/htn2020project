@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
 
-// Create a text controller and use it to retrieve the current value
-// of the TextField.
-final myController1 = TextEditingController();
-final myController2 = TextEditingController();
-final myController3 = TextEditingController();
-
 class EditTask extends StatefulWidget {
   @override
   _EditTaskState createState() => _EditTaskState();
@@ -13,14 +7,20 @@ class EditTask extends StatefulWidget {
 
 Map data = {};
 class _EditTaskState extends State<EditTask> {
-  // @override
-  // void dispose() {
-  //   // Clean up the controller when the widget is disposed.
-  //   myController1.dispose();
-  //   myController2.dispose();
-  //   myController3.dispose();
-  //   super.dispose();
-  // }
+  // Create a text controller and use it to retrieve the current value
+  // of the TextField.
+  final myController1 = TextEditingController();
+  final myController2 = TextEditingController();
+  final myController3 = TextEditingController();
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    myController1.dispose();
+    myController2.dispose();
+    myController3.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -84,9 +84,9 @@ class _EditTaskState extends State<EditTask> {
             FlatButton.icon(
               onPressed: () {
                 Navigator.pop(context, { //include all parties (5 things)
-                  'returnedhour': myController1.text.isEmpty ? null : double.parse(myController1.text),
-                  'returnedminute': myController2.text.isEmpty ? null : double.parse(myController2.text),
-                  'returnedsecond': myController3.text.isEmpty ? null : double.parse(myController3.text),
+                  'returnedhour': myController1.text.isEmpty ? 0 : double.parse(myController1.text),
+                  'returnedminute': myController2.text.isEmpty ? 0 : double.parse(myController2.text),
+                  'returnedsecond': myController3.text.isEmpty ? 0 : double.parse(myController3.text),
                   'completed' : false,
                   'delete': false
                 });
