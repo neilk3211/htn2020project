@@ -25,6 +25,59 @@ class _EditTaskState extends State<EditTask> {
         child: Column( 
           mainAxisAlignment: MainAxisAlignment.center, 
           children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Flexible(
+                  child: TextField(
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                    ),
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+                Flexible(
+                  child: TextField(
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                    ),
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+                Flexible(
+                  child: TextField(
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                    ),
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 20),
+            FlatButton.icon(
+              onPressed: () {
+                // action upon button press
+              },
+              icon: Icon(Icons.timer,
+                color: Colors.grey[100],
+              ),
+              label: Text('Log Time (h min s)',
+                style: TextStyle(
+                  color: Colors.grey[100],
+                  fontSize: 18,
+                ),
+              ),
+              color: Colors.blue[800],
+            ),
+            SizedBox(height: 30),
             FlatButton.icon(
               onPressed: () {
                 Navigator.pop(context, {
