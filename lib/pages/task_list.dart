@@ -23,6 +23,7 @@ class _TaskListState extends State<TaskList> {
 
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
     User user = Provider.of<User>(context);
     /*return  StreamBuilder<UserData>(
       stream: DatabaseService(uid: user.uid).userData,
@@ -52,6 +53,49 @@ class _TaskListState extends State<TaskList> {
                   icon: Icon(Icons.person), 
                   label: Text('logout')),
                 ],
+=======
+    return Scaffold(
+        backgroundColor: Colors.grey[200],
+        appBar: AppBar(
+          backgroundColor: Colors.blue[900],
+          title: Row(
+            children: [
+              Text('My Tasks'),
+              SizedBox(width: 100,),
+              FlatButton.icon(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/completedlist');
+                },
+                icon: Icon(Icons.check,
+                  color: Colors.grey[100],
+                ),
+                label: Text('Completed Tasks',
+                  style: TextStyle(
+                    color: Colors.grey[100],
+                    fontSize: 14,
+                  ),
+                ),
+                color: Colors.blue[800],
+              ),
+            ],
+          ),
+          elevation: 0,
+        ),
+        floatingActionButton: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              FloatingActionButton(
+                child: Icon(
+                    Icons.add
+                ),
+                onPressed:  () async {
+                  dynamic newtask = await Navigator.pushNamed(context, '/addtask');
+                  setState(() {
+                    tasknames.add(Tasks(taskname: newtask['taskname'], remainingtime: newtask['duration']));
+                  });
+                },
+                heroTag: null,
+>>>>>>> 3de7d7a670062efe256f97be5f17a8b5c545da6f
               ),
               floatingActionButton: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
