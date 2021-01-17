@@ -14,9 +14,9 @@ class _TaskListState extends State<TaskList> {
     Tasks(url: 'Africa/Nairobi', taskname: 'Geography project', remainingtime: 2400),
   ];
 
-  int hourlogged = 0;
-  int minutelogged = 0;
-  int secondlogged = 0;
+  int remaininghour;
+  int remainingminute;
+  int remainingsecond;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class _TaskListState extends State<TaskList> {
                 onPressed:  () async {
                   dynamic newtask = await Navigator.pushNamed(context, '/addtask');
                   setState(() {
-                    tasknames.add(Tasks(taskname: newtask['taskname']));
+                    tasknames.add(Tasks(taskname: newtask['taskname'], remainingtime: newtask['duration']));
                   });
                 },
                 heroTag: null,
@@ -76,9 +76,12 @@ class _TaskListState extends State<TaskList> {
                           tasknames[index].complete = true;
                         });
                       }
-
+                      setState(() {
+                        tasknames[index].remainingtime = tasknames[index].remainingtime - result['returnedhour'] * 3600 - result['returnedminute'] * 60 - result['returnedsecond'];
+                      });
                     },
-                    title: Text('${tasknames[index].taskname} - ${tasknames[index].remainingtime}'),
+                    // taskname - h:min:s
+                    title: Text('${tasknames[index].taskname} - ${(tasknames[index].remainingtime / 3600.0).truncate()}:${(tasknames[index].remainingtime % 3600.0 / 60.0).truncate()}:${(tasknames[index].remainingtime % 3600.0 % 60.0).truncate()}'),
                     leading: Icon(tasknames[index].complete ? Icons.check : Icons.clear_sharp),
                   ),
                 ),
@@ -93,7 +96,7 @@ class Tasks {
 
   String taskname; // task name for UI
   String url; // task url for api endpoint - no function at the moment
-  int remainingtime; //in seconds
+  double remainingtime; //in seconds
   bool complete = false;
 
   Tasks({ this.taskname, this.url, this.remainingtime });

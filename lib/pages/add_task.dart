@@ -90,7 +90,7 @@ class _AddTaskState extends State<AddTask> {
                     if (_formKey.currentState.validate()) {
                       Navigator.pop(context, {
                         'taskname': nameController.text,
-                        'duration': hourController.text.isEmpty ? null : double.parse(hourController.text)
+                        'duration': hourController.text.isEmpty ? null : double.parse(hourController.text)*3600 //convert hour to seconds
                       });
                     }
                   }, 

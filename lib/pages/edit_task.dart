@@ -83,7 +83,13 @@ class _EditTaskState extends State<EditTask> {
             SizedBox(height: 20),
             FlatButton.icon(
               onPressed: () {
-                // action upon button press
+                Navigator.pop(context, { //include all parties (5 things)
+                  'returnedhour': myController1.text.isEmpty ? null : double.parse(myController1.text),
+                  'returnedminute': myController2.text.isEmpty ? null : double.parse(myController2.text),
+                  'returnedsecond': myController3.text.isEmpty ? null : double.parse(myController3.text),
+                  'completed' : false,
+                  'delete': false
+                });
               },
               icon: Icon(Icons.timer,
                 color: Colors.grey[100],
@@ -100,6 +106,9 @@ class _EditTaskState extends State<EditTask> {
             FlatButton.icon(
               onPressed: () {
                 Navigator.pop(context, {
+                  'returnedhour': null,
+                  'returnedminute': null,
+                  'returnedsecond': null,
                   'completed' : true,
                   'delete': false
                 });
@@ -120,6 +129,9 @@ class _EditTaskState extends State<EditTask> {
               onPressed: (){
                 print('delete');
                 Navigator.pop(context, {
+                  'returnedhour': null,
+                  'returnedminute': null,
+                  'returnedsecond': null,
                   'delete': true,
                   'complete': false,
                 });
