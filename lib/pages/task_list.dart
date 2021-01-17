@@ -13,10 +13,6 @@ class _TaskListState extends State<TaskList> {
     Tasks(url: 'Africa/Nairobi', taskname: 'Geography project', remainingtime: 2400),
   ];
 
-  int remaininghour;
-  int remainingminute;
-  int remainingsecond;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
