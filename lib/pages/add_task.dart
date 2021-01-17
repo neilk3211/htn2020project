@@ -72,9 +72,6 @@ class _AddTaskState extends State<AddTask> {
                 ),
               ),
               validator: (value) {
-                if (value.isEmpty) {
-                  return null;
-                }
                 try { 
                   double.parse(value);
                   return null;
