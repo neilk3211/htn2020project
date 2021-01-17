@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MaterialApp(
-  home: CreateNewTask(),
-));
-
 /*testing stuff here
 int maxLength = 2;
 final bool maxLengthEnforced = true;*/
 
-class CreateNewTask extends StatefulWidget {
+class AddTask extends StatefulWidget {
   @override
-  _CreateNewTaskState createState() => _CreateNewTaskState();
+  _AddTaskState createState() => _AddTaskState();
 }
 
-class _CreateNewTaskState extends State<CreateNewTask> {
+class _AddTaskState extends State<AddTask> {
 /* testing controller stuff here, don't worry about this for now
   final myController = TextEditingController();
 
