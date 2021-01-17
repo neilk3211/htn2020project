@@ -19,8 +19,27 @@ class _TaskListState extends State<TaskList> {
         backgroundColor: Colors.grey[200],
         appBar: AppBar(
           backgroundColor: Colors.blue[900],
-          title: Text('My Tasks'),
-          centerTitle: true,
+          title: Row(
+            children: [
+              Text('My Tasks'),
+              SizedBox(width: 100,),
+              FlatButton.icon(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/completedlist');
+                },
+                icon: Icon(Icons.check,
+                  color: Colors.grey[100],
+                ),
+                label: Text('Completed Tasks',
+                  style: TextStyle(
+                    color: Colors.grey[100],
+                    fontSize: 14,
+                  ),
+                ),
+                color: Colors.blue[800],
+              ),
+            ],
+          ),
           elevation: 0,
         ),
         floatingActionButton: Column(

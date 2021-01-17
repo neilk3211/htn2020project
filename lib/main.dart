@@ -3,6 +3,7 @@ import 'package:htn2020project/pages/add_task.dart';
 import 'package:htn2020project/pages/calendar.dart';
 import 'package:htn2020project/pages/edit_task.dart';
 import 'package:htn2020project/pages/task_list.dart';
+import 'package:htn2020project/pages/completed_list.dart';
 
 void main() => runApp(MaterialApp(
   initialRoute: '/',
@@ -11,5 +12,6 @@ void main() => runApp(MaterialApp(
     '/addtask': (context) => AddTask(),
     '/edittask': (context) => EditTask(),
     '/calendar': (context) => Calendar(),
+    '/completedlist': (context) => CompletedList(),
   },
 ));
