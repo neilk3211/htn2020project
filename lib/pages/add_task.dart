@@ -1,104 +1,103 @@
 import 'package:flutter/material.dart';
-
-void main() => runApp(MaterialApp(
-  home: CreateNewTask(),
-));
+import 'package:flutter/services.dart';
 
 /*testing stuff here
 int maxLength = 2;
 final bool maxLengthEnforced = true;*/
 
-class CreateNewTask extends StatefulWidget {
+class AddTask extends StatefulWidget {
   @override
-  _CreateNewTaskState createState() => _CreateNewTaskState();
+  _AddTaskState createState() => _AddTaskState();
 }
 
-class _CreateNewTaskState extends State<CreateNewTask> {
-/* testing controller stuff here, don't worry about this for now
-  final myController = TextEditingController();
+class _AddTaskState extends State<AddTask> {
+  final nameController = TextEditingController();
+  final hourController = TextEditingController();
 
   @override
   void dispose() {
-    myController.dispose();
+    nameController.dispose();
     super.dispose();
   }
-*/
+  final _formKey = GlobalKey<FormState>();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Create New Task'),
+        backgroundColor: Colors.blue[900],
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Container(
-              child: Text(
-                'Name of task',
-                style: TextStyle(
-                  fontSize: 25,
-                ),
-              ),
-            ),
-            Container(
-              child: TextField(
+        child: Form(
+                  key: _formKey,
+                  child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              TextFormField(
+                controller: nameController,
+                cursorColor: Colors.blue,
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(),
+                  labelText: 'Name of Task *',
+                  labelStyle: TextStyle(
+                    color: Colors.blue,
+                  ),
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.blue),
+                  ),
                 ),
-                style: TextStyle(
-                  fontSize: 20,
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return 'task name is required';
+                  } else {
+                    return null;
+                  }
+                },
+              ),
+              SizedBox(height:20),
+              TextFormField(
+              cursorColor: Colors.blue,
+              controller: hourController,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                labelText: 'Hours to Complete Task',
+                icon: Icon(Icons.hourglass_bottom),
+                labelStyle: TextStyle(
+                  color: Colors.blue,
+                ),
+                enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.blue),
                 ),
               ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 20.0),
-              child: Text(
-                'Amount of time needed',
-                style: TextStyle(
-                  fontSize: 25,
-                ),
+              validator: (value) {
+                if (value.isEmpty) {
+                  return null;
+                }
+                try { 
+                  double.parse(value);
+                  return null;
+                } catch (e)  {
+                  return 'please enter a number';
+                }
+              },
               ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Flexible(
-                  child: TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                    ),
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-                Flexible(
-                  child: TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                    ),
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-                Flexible(
-                  child: TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                    ),
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ],
+              SizedBox(height: 40),
+              Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    if (_formKey.currentState.validate()) {
+                      Navigator.pop(context, {
+                        'taskname': nameController.text,
+                        'duration': hourController.text.isEmpty ? null : double.parse(hourController.text)
+                      });
+                    }
+                  }, 
+                  child: Text('Save')),
+              )
+            ],
+          ),
         ),
       ),
     );

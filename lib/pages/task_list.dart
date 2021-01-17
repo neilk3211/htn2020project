@@ -30,8 +30,11 @@ class _TaskListState extends State<TaskList> {
                 child: Icon(
                     Icons.add
                 ),
-                onPressed: () {
-                  Navigator.pushNamed(context, '/addtask');
+                onPressed:  () async {
+                  dynamic newtask = await Navigator.pushNamed(context, '/addtask');
+                  setState(() {
+                    tasknames.add(Tasks(taskname: newtask['taskname']));
+                  });
                 },
                 heroTag: null,
               ),
