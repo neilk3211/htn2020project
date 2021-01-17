@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 
+// Create a text controller and use it to retrieve the current value
+// of the TextField.
+final myController1 = TextEditingController();
+final myController2 = TextEditingController();
+final myController3 = TextEditingController();
+
 class EditTask extends StatefulWidget {
   @override
   _EditTaskState createState() => _EditTaskState();
@@ -7,6 +13,15 @@ class EditTask extends StatefulWidget {
 
 Map data = {};
 class _EditTaskState extends State<EditTask> {
+  // @override
+  // void dispose() {
+  //   // Clean up the controller when the widget is disposed.
+  //   myController1.dispose();
+  //   myController2.dispose();
+  //   myController3.dispose();
+  //   super.dispose();
+  // }
+
   @override
   Widget build(BuildContext context) {
     data = ModalRoute.of(context).settings.arguments;
@@ -29,6 +44,7 @@ class _EditTaskState extends State<EditTask> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
+                // Three text fields for logged time input
                 Flexible(
                   child: TextField(
                     decoration: InputDecoration(
@@ -37,6 +53,7 @@ class _EditTaskState extends State<EditTask> {
                     style: TextStyle(
                       fontSize: 20,
                     ),
+                    controller: myController1,
                   ),
                 ),
                 Flexible(
@@ -47,6 +64,7 @@ class _EditTaskState extends State<EditTask> {
                     style: TextStyle(
                       fontSize: 20,
                     ),
+                    controller: myController2,
                   ),
                 ),
                 Flexible(
@@ -57,6 +75,7 @@ class _EditTaskState extends State<EditTask> {
                     style: TextStyle(
                       fontSize: 20,
                     ),
+                    controller: myController3,
                   ),
                 ),
               ],

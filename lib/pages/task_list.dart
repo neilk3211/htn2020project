@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:htn2020project/pages/edit_task.dart' as edit_task;
 
 class TaskList extends StatefulWidget {
   @override
@@ -7,11 +8,15 @@ class TaskList extends StatefulWidget {
 
 class _TaskListState extends State<TaskList> {
   List<Tasks> tasknames = [
-    Tasks(url: 'Europe/London', taskname: 'English project'),
-    Tasks(url: 'Europe/Berlin', taskname: 'Math project'),
-    Tasks(url: 'Africa/Cairo', taskname: 'Science project'),
-    Tasks(url: 'Africa/Nairobi', taskname: 'Geography project'),
+    Tasks(url: 'Europe/London', taskname: 'English project', remainingtime: 3600),
+    Tasks(url: 'Europe/Berlin', taskname: 'Math project', remainingtime: 3600),
+    Tasks(url: 'Africa/Cairo', taskname: 'Science project', remainingtime: 7200),
+    Tasks(url: 'Africa/Nairobi', taskname: 'Geography project', remainingtime: 2400),
   ];
+
+  int hourlogged = 0;
+  int minutelogged = 0;
+  int secondlogged = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -71,8 +76,9 @@ class _TaskListState extends State<TaskList> {
                           tasknames[index].complete = true;
                         });
                       }
+
                     },
-                    title: Text(tasknames[index].taskname),
+                    title: Text('${tasknames[index].taskname} - ${tasknames[index].remainingtime}'),
                     leading: Icon(tasknames[index].complete ? Icons.check : Icons.clear_sharp),
                   ),
                 ),
@@ -86,9 +92,10 @@ class _TaskListState extends State<TaskList> {
 class Tasks {
 
   String taskname; // task name for UI
-  String url; // task url for api endpoint
+  String url; // task url for api endpoint - no function at the moment
+  int remainingtime; //in seconds
   bool complete = false;
 
-  Tasks({ this.taskname, this.url });
+  Tasks({ this.taskname, this.url, this.remainingtime });
 
 }
