@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "727216124721",
+    "project_id": "time-logging-task-list",
+    "storage_bucket": "time-logging-task-list.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:727216124721:android:3c8942a1b5cdaea2c77610",
+        "android_client_info": {
+          "package_name": "com.canopus.htn2020project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "727216124721-gm2aa7tu4beh9s3t93p4v96nj36u5jg1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVivKn2QqU8edVSTba7gcU1-HCt-lDUNo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "727216124721-gm2aa7tu4beh9s3t93p4v96nj36u5jg1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
