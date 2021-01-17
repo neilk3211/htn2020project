@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:htn2020project/pages/edit_task.dart' as edit_task;
 
 class TaskList extends StatefulWidget {
   @override
@@ -75,10 +74,12 @@ class _TaskListState extends State<TaskList> {
                         setState(() {
                           tasknames[index].complete = true;
                         });
+                      } else {
+                         
+                        setState(() {  
+                        tasknames[index].remainingtime = result['returnedhour']*3600 + result['returnedminute']*60 + result['returnedsecond'];
+                        }); 
                       }
-                      setState(() {
-                        tasknames[index].remainingtime = tasknames[index].remainingtime - result['returnedhour'] * 3600 - result['returnedminute'] * 60 - result['returnedsecond'];
-                      });
                     },
                     // taskname - h:min:s
                     title: Text('${tasknames[index].taskname} - ${(tasknames[index].remainingtime / 3600.0).truncate()}:${(tasknames[index].remainingtime % 3600.0 / 60.0).truncate()}:${(tasknames[index].remainingtime % 3600.0 % 60.0).truncate()}'),

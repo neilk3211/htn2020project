@@ -84,9 +84,9 @@ class _EditTaskState extends State<EditTask> {
             FlatButton.icon(
               onPressed: () {
                 Navigator.pop(context, { //include all parties (5 things)
-                  'returnedhour': myController1.text.isEmpty ? null : double.parse(myController1.text),
-                  'returnedminute': myController2.text.isEmpty ? null : double.parse(myController2.text),
-                  'returnedsecond': myController3.text.isEmpty ? null : double.parse(myController3.text),
+                  'returnedhour': myController1.text.isEmpty ? 0 : double.parse(myController1.text),
+                  'returnedminute': myController2.text.isEmpty ? 0 : double.parse(myController2.text),
+                  'returnedsecond': myController3.text.isEmpty ? 0 : double.parse(myController3.text),
                   'completed' : false,
                   'delete': false
                 });
