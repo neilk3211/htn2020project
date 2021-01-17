@@ -74,7 +74,13 @@ class _TaskListState extends State<TaskList> {
                          
                         setState(() {  
                         tasknames[index].remainingtime = tasknames[index].remainingtime - (result['returnedhour']*3600 + result['returnedminute']*60 + result['returnedsecond']);
-                        }); 
+                        });
+                        if (tasknames[index].remainingtime <= 0) {
+                          setState(() {
+                            tasknames[index].complete = true;
+                            tasknames[index].remainingtime = 0;
+                          });
+                        }
                       }
                     },
                     // taskname - h:min:s
